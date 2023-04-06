@@ -5,7 +5,7 @@ import Modal from "react-modal";
 
 export interface Props {
     zipcode: string | undefined;
-    onchange: (zipcode: string) => void;
+/*    onchange: (zipcode: string) => void;*/
 }
 
 
@@ -76,7 +76,7 @@ const ValidatorControl = (props: Props): JSX.Element => {
             }
         };
         xhr.send();
-    }, [props.zipcode]);
+    }, []);
 
     return (
         <div>

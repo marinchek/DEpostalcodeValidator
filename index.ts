@@ -5,14 +5,10 @@ import ValidatorControl, { Props } from "./PostalcodeValidator";
 
 export class PostalcodeValidatorControl implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-    private _notifyOutputChanged: () => void;
     private _container: HTMLDivElement;
-
-    private _zipNumber: string | undefined;
 
     private _props: Props = {
         zipcode: undefined,
-        onchange: this.notifyChange.bind(this),
     }
 
     /**
@@ -33,7 +29,6 @@ export class PostalcodeValidatorControl implements ComponentFramework.StandardCo
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        this._notifyOutputChanged = notifyOutputChanged;
         this._container = document.createElement("div");
         container.appendChild(this._container);
     }
@@ -51,10 +46,10 @@ export class PostalcodeValidatorControl implements ComponentFramework.StandardCo
         );
     }
 
-    private notifyChange(newPostalcode: string | undefined) {
-        this._zipNumber = newPostalcode;
-        this._notifyOutputChanged();
-     }
+    //private notifyChange(newPostalcode: string | undefined) {
+    //    this._zipNumber = newPostalcode;
+    //    this._notifyOutputChanged();
+    // }
     /**
      * It is called by the framework prior to a control receiving new data.
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
