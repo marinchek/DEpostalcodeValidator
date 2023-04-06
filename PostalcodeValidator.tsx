@@ -5,7 +5,6 @@ import Modal from "react-modal";
 
 export interface Props {
     zipcode: string | undefined;
-/*    onchange: (zipcode: string) => void;*/
 }
 
 
