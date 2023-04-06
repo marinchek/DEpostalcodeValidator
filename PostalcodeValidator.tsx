@@ -36,14 +36,19 @@ const ValidatorControl = (props: Props): JSX.Element => {
 
     useEffect(() => {
         var zipcodeNumber = parseInt(props.zipcode ? props.zipcode : "");
+
+        //Postal code format validation. In Germans example, the postal code must have exactly 5 digits.
         if (zipcodeNumber == undefined || zipcodeNumber == null || zipcodeNumber.toString().length > 5 || zipcodeNumber.toString().length < 5) {
+            //setText when format is not correct.
             setText("Postleitzahl Format ist nicht korrekt formatiert");
             setTextColor("red");
             setValidationEmoji("❌");
             setButtonVisibility(false);
+            //Beende useEffect React function.
             return;
         }
         const xhr = new XMLHttpRequest();
+        ///Change the API to the country you want to validate your postal code.
         xhr.open('GET', 'https://api.zippopotam.us/de/' + props.zipcode);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
@@ -57,8 +62,10 @@ const ValidatorControl = (props: Props): JSX.Element => {
                     setTextColor("green");
                     setValidationEmoji("✔")
                     setButtonVisibility(true);
+                    //setText when postal code is available.
                     setText("Postleitzahl vorhanden");
                 }
+                //When formating correct is, but the postal code does not exist.
                 else {
                     setTextColor("red");
                     setValidationEmoji("❌");
