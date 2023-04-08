@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "OxUaB/ZUlOf4+xbZY97j2zxwan8p28c3hZpF7Pg2s7pOx/06dOOGjMVPjf31fH83eTL2JboaffdD7SwEQQ2xBw==",
+  "success": true,
+  "projectFilePath": "C:\\PCF Controls\\PostalcodeValidatorPCF\\postalcodevalidatorcontrol\\postalcodevalidatorsolution\\postalcodeValidatorSolution.cdsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Marino.Ivakovic\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\Marino.Ivakovic\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net462\\1.0.0\\microsoft.netframework.referenceassemblies.net462.1.0.0.nupkg.sha512",
+    "C:\\Users\\Marino.Ivakovic\\.nuget\\packages\\microsoft.powerapps.msbuild.pcf\\1.21.13\\microsoft.powerapps.msbuild.pcf.1.21.13.nupkg.sha512",
+    "C:\\Users\\Marino.Ivakovic\\.nuget\\packages\\microsoft.powerapps.msbuild.solution\\1.21.13\\microsoft.powerapps.msbuild.solution.1.21.13.nupkg.sha512"
+  ],
+  "logs": []
+}
