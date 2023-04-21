@@ -1,21 +1,26 @@
-﻿import * as React from "react";
+﻿/**
+* Postalcode Validation for Postalcode Field in Dynamics365
+* @author Marin Ivakovic
+* @author R.iT GmbH
+* @current version : 1.0
+**/
+
+import * as React from "react";
 import { useState, useEffect, useRef, useMemo, useLayoutEffect } from "react";
 import Modal from "react-modal";
-
 
 export interface Props {
     zipcode: string | undefined;
 }
-
 
 const ValidatorControl = (props: Props): JSX.Element => {
 
     const [textColor, setTextColor] = useState("");
     const [data, setData] = useState<{ country: string, state: string, placeName: string } | null>(null);
     const [text, setText] = useState("");
-    const [validationEmoji, setValidationEmoji] = useState("");
-    const [buttonVisibile, setButtonVisibility] = useState(false);
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [validationEmoji, setValidationIcon] = useState("");
+    const [buttonVisibile, setInfoButtonVisibility] = useState(false);
+    const [modalIsOpen, setModalVisibility] = useState(false);
 
     var LabelStyle = {
         color: textColor,
@@ -26,29 +31,29 @@ const ValidatorControl = (props: Props): JSX.Element => {
 
     const handleClick = () => {
         console.log(data);
-        setIsOpen(true);
+        setModalVisibility(true);
     }
 
     function closeModal() {
-        setIsOpen(false);
+        setModalVisibility(false);
     }
 
     useEffect(() => {
-        var zipcodeNumber = parseInt(props.zipcode ? props.zipcode : "");
+        var zipcodeNumber = props.zipcode ? props.zipcode : "";
 
-        //Postal code format validation. In Germans example, the postal code must have exactly 5 digits.
+        //Postal code format validation. I.e. the german postal code must have exactly 5 digits.
         if (zipcodeNumber == undefined || zipcodeNumber == null || zipcodeNumber.toString().length > 5 || zipcodeNumber.toString().length < 5) {
             //setText when format is not correct.
             setText("Postleitzahl Format ist nicht korrekt formatiert");
             setTextColor("red");
-            setValidationEmoji("❌");
-            setButtonVisibility(false);
-            //Beende useEffect React function.
+            setValidationIcon("❌");
+            setInfoButtonVisibility(false);
             return;
         }
         const xhr = new XMLHttpRequest();
-        ///Change the API to the country you want to validate your postal code.
-        xhr.open('GET', 'https://api.zippopotam.us/de/' + props.zipcode);
+
+        //Change the API to the country you want to validate your postal code.        
+        xhr.open('GET', 'https://api.zippopotam.us/de/' + zipcodeNumber);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
@@ -59,17 +64,17 @@ const ValidatorControl = (props: Props): JSX.Element => {
                         state: response.places[0].state,
                     });
                     setTextColor("green");
-                    setValidationEmoji("✔")
-                    setButtonVisibility(true);
+                    setValidationIcon("✔")
+                    setInfoButtonVisibility(true);
                     //setText when postal code is available.
                     setText("Postleitzahl vorhanden");
                 }
-                //When formating correct is, but the postal code does not exist.
+                //Format is correct, but postal code does not exist.
                 else {
                     setTextColor("red");
-                    setValidationEmoji("❌");
+                    setValidationIcon("❌");
                     setText("Postleitzahl existiert nicht");
-                    setButtonVisibility(false);
+                    setInfoButtonVisibility(false);
                     console.log(xhr.statusText);
                 }
             }
@@ -78,6 +83,7 @@ const ValidatorControl = (props: Props): JSX.Element => {
     }, []);
 
     return (
+        //Modal Dialog with additional information.
         <div>
             <label style={LabelStyle} >{text} {validationEmoji} </label>
             {buttonVisibile && <button style={styles.button} onClick={handleClick}>Mehr Infos</button>}
@@ -85,8 +91,7 @@ const ValidatorControl = (props: Props): JSX.Element => {
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={styles.customStyles}
-                contentLabel="Example Modal"
-            >
+                contentLabel="Additional information dialog">
                 <h3>Zusätzliche Information:</h3>
                 <p>Land: {data?.country}</p>
                 <p>Bundesland: {data?.state}</p>
