@@ -8,7 +8,7 @@
   <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props')" />
 
   <PropertyGroup>
-    <ProjectGuid>cd9e938a-2886-402a-9a01-4fde669de6c1</ProjectGuid>
+    <ProjectGuid>a3ff69c8-6440-49a9-b5fb-11e3703ece12</ProjectGuid>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <!--Remove TargetFramework when this is available in 16.1-->
     <TargetFramework>net462</TargetFramework>
@@ -44,7 +44,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\PostalcodeValidatorPCF.pcfproj" />
+    <ProjectReference Include="..\..\PostalcodeValidatorPCF.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

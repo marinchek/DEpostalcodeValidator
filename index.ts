@@ -33,7 +33,6 @@ export class PostalcodeValidatorControl implements ComponentFramework.StandardCo
         container.appendChild(this._container);
     }
 
-
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
@@ -46,10 +45,6 @@ export class PostalcodeValidatorControl implements ComponentFramework.StandardCo
         );
     }
 
-    //private notifyChange(newPostalcode: string | undefined) {
-    //    this._zipNumber = newPostalcode;
-    //    this._notifyOutputChanged();
-    // }
     /**
      * It is called by the framework prior to a control receiving new data.
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”

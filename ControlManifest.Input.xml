@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="rit" constructor="PostalcodeValidatorControl" version="0.0.24" display-name-key="PostalcodeValidatorControl" description-key="PostalcodeValidatorControl description" control-type="standard" >
+  <control namespace="rit" constructor="PostalcodeValidatorControl" version="0.0.25" display-name-key="PostalcodeValidatorControl" description-key="PostalcodeValidatorControl description" control-type="standard" >
     <external-service-usage enabled="false">
       <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
       <domain></domain>
